@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/employee', 'EmployeeController@index')->name('employee.index');
+Route::get('employee/{employee}', 'EmployeeController@show')->name('employee.show');
+Route::get('/department', 'DepartmentController@index')->name('department.index');
+Route::get('/department/{department}', 'DepartmentController@show')->name('department.show');
