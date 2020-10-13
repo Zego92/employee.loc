@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
-    public function index(Request $request, int $limit = 5)
+    public function index(Request $request)
     {
-        $lim = $request->limit;
-        $departments = Department::with('employees.paymentType')->take($lim ?? $limit)->paginate($lim ?? $limit);
+        $departments = Department::with('employees.paymentType')->paginate($request->limit);
+        $departments->appends(request()->query());
         return view('department', compact('departments'));
     }
 
