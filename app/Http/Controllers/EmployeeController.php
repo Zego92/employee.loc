@@ -11,8 +11,7 @@ class EmployeeController extends Controller
 {
     public function index(Request $request)
     {
-        $lim = $request->limit;
-        $employees = Employee::with('department', 'paymentType')->paginate($lim);
+        $employees = Employee::with('department', 'paymentType')->paginate($request->limit);
         $employees->appends(request()->query());
         return view('employee', compact('employees'));
     }
