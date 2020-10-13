@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    public function index(Request $request, int $limit = 20)
+    public function index(Request $request)
     {
         $lim = $request->limit;
-        $employees = Employee::with('department', 'paymentType')->take($lim ?? $limit)->paginate($lim ?? $limit);
+        $employees = Employee::with('department', 'paymentType')->paginate($lim);
+        $employees->appends(request()->query());
         return view('employee', compact('employees'));
     }
 

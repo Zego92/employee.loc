@@ -6,7 +6,6 @@
             <div class="col-md-12 mb-3">
                 <div class="table-responsive">
                     <form id="limit-form" action="{{ route('employee.index') }}" method="get">
-                        @csrf
                         <div class="input-group mb-3">
                             <select title=""  name="limit" class="custom-select" id="inputGroupSelect01">
                                 <option selected>Choose limit</option>
